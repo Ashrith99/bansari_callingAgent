@@ -21,7 +21,7 @@ _clover_import_error = None
 
 try:
     from clover import get_clover_client
-    CLOVER_ENABLED = True
+    CLOVER_ENABLED = False
 except Exception as e:
     _clover_import_error = str(e)
     # Don't log here - will log later when actually used

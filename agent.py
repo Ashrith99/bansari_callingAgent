@@ -220,7 +220,7 @@ class RestaurantAgent(Agent):
             # Generate greeting (enabled by default, can be disabled with ENABLE_TTS=0)
             if os.getenv("ENABLE_TTS", "1") != "0":
                 session.generate_reply(
-                    instructions='Say the complete greeting in English: "Hello! Welcome to bansari Restaurant. I am Sarah. What would you like to order today?" Say all parts of the greeting - do not skip any words.'
+                    instructions='Say the complete greeting in English: "Hello! Welcome to bansari Restaurant. I am Sarah. What would you like to order today?" Say all parts - do not skip any words. Then detect the customer\'s language ONLY from their FIRST response and lock into that language for the entire call.'
                 )
         except Exception as e:
             log.warning(f"Greeting generation error: {e}, continuing anyway")
