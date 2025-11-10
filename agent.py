@@ -185,7 +185,7 @@ class RestaurantAgent(Agent):
 
     async def on_message(self, message, session):
         if self.termination_started:
-            return "The call is ending. Thank you for choosing Bawarchi Restaurant!"
+            return "The call is ending. Thank you for choosing bansari Restaurant!"
         try:
             # Use reasonable timeout - balance between waiting and responsiveness
             # If LLM is consistently slow, fallback will kick in
@@ -207,7 +207,7 @@ class RestaurantAgent(Agent):
         if any(x in msg for x in ['order', 'food', 'menu', 'biryani', 'chicken', 'mutton', 'rice', 'curry']):
             return "I can help you place an order! Please tell me what you'd like to order."
         if any(x in msg for x in ['hello', 'hi', 'hey']):
-            return "Hello! Welcome to Bawarchi Restaurant. How can I help you today?"
+            return "Hello! Welcome to bansari Restaurant. How can I help you today?"
         if any(x in msg for x in ['price', 'cost', 'how much']):
             return "Our prices are very reasonable. What specific dish would you like to know the price for?"
         return "I'm here to help you with your order. What would you like to order?"
@@ -220,7 +220,7 @@ class RestaurantAgent(Agent):
             # Generate greeting (enabled by default, can be disabled with ENABLE_TTS=0)
             if os.getenv("ENABLE_TTS", "1") != "0":
                 session.generate_reply(
-                    instructions='Say the complete greeting in English: "Hello! Welcome to Bawarchi Restaurant. I am Sarah. What would you like to order today?" Say all parts of the greeting - do not skip any words.'
+                    instructions='Say the complete greeting in English: "Hello! Welcome to bansari Restaurant. I am Sarah. What would you like to order today?" Say all parts of the greeting - do not skip any words.'
                 )
         except Exception as e:
             log.warning(f"Greeting generation error: {e}, continuing anyway")
@@ -241,7 +241,7 @@ class RestaurantAgent(Agent):
                     if os.getenv("ENABLE_TTS", "1") != "0":
                         await asyncio.wait_for(
                             self.current_session.generate_reply(
-                                instructions="Say: Thank you for choosing Bawarchi Restaurant! Goodbye!"
+                                instructions="Say: Thank you for choosing bansari Restaurant! Goodbye!"
                             ),
                             timeout=4.0
                         )
